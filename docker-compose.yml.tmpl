@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  app:
+    build: 
+      context: .
+    working_dir: /src
+    ports:
+      - 9000:9000
+    environment:
+        - PARTICIPANTS=${PARTICIPANTS}
+        - BASEURL=http://www.boredapi.com/api/
+        - ENVIRONMENT=${ENVIRONMENT}
+        - VERSION=${VERSION}

@@ -6,7 +6,7 @@
 **Contents**
 - [1. Getting Started](#getting-started)
 - [2. Local requirements](#local-requirements)
-- [3. Issues](#issues)
+- [3. Issues](#issues-and-improvement)
 - [4. LifeCycle Diagram](#lifecycle)
 - [5. Infrastructure Diagram](#infrastructure-diagram)
 
@@ -19,15 +19,17 @@ once the applicationis up and running,test the index ie http://127.0.0.1/, url t
 
 Use "/participants" to get a reply based on the value of PARTICIPANTS set in the environmental variable.
 
-## local requirements
+## Local requirements
 Ensure you have docker version >= 20.10.12 and docker-compose version >= 1.29.2
 
-## Issues
-There is currently no https configures. This can be acchieved by adding a proxy service that will terminate the https connection and the pass the traffic to the upstream application.
+## Issues and Improvement
+- There is currently no https configures. This can be acchieved by adding a proxy service that will terminate the https connection and the pass the traffic to the upstream application.
+- For administering the deployment, there should be consideration for a bastion host in the cluster that allows for remote connection for troubleshooting, monitoring etc.
+- The branches responsible for deploying to staging/production shoudl be protected, hence, only authourised users/ a succesfull unit test etc. will enable deployment to the respective environments. 
 
 
 ## Diagram
-To deploy to production, I will be inclined to use a containerised solution such as kubernetes. This will require detailing kubernetes manifests and a cloud platform such as AWS to run the cluster. I will then go ahead to describe the stages of building and deploying the application in a ci/cd pipeline (yml file). Once a commit has been merged to main/master branch and it is tagged, it will get deployed to production.
+To deploy to production, I will be inclined to use a containerised solution such as kubernetes. This will require detailing kubernetes manifests and a cloud platform such as AWS to run the cluster. I will then go ahead to describe the stages of building and deploying the application in a ci/cd pipeline (yml file). Once a commit has been merged to main/master branch or  tagged, it will get deployed to production.
 
 As this is a small application, I will consider using docker-compose on a small ec2 instance using terraform for orchestration. The environmental variables will be set on gitlab and as the deployment passes from staging to prodution, the respective env variables will be injected into the app before it is deployed.
 
@@ -35,7 +37,7 @@ As this is a small application, I will consider using docker-compose on a small 
 ## lifecycle
 ![lifecycle](/images/app_deployment_life.PNG)
 
-## infrastructure diagram
-As there is no database / private resource to consider, there wil only be two public facing subnests, each in different Availability zones to allow for redundancy. The
+## Infrastructure diagram
+As there is no database / private resource to consider, there will only be two public facing subnests, each in different Availability zones to allow for redundancy. The
 
 ![infra](/images/infra.PNG)

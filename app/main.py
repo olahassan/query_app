@@ -1,4 +1,3 @@
-import imp
 from fastapi import FastAPI,status
 from fastapi.exceptions import HTTPException
 from app.config import settings

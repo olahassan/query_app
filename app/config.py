@@ -1,4 +1,3 @@
-from ensurepip import version
 from pydantic import BaseSettings
 
 class Settings(BaseSettings):

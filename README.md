@@ -15,7 +15,7 @@ O# Name: Olatunji Hassan
 There is a docker-compose file that allows you to run the application locally. Copy 
 docker-compose.yml.tmpl to docker-compose.yml, fill out the neccessary environmental variables, use "docker-compose up -d" and postman for testing.
 
-Once the application is up and running, test the index i.e. http://127.0.0.1/, URL to get the current environment and version.
+Once the application is up and running, test the index i.e. http://127.0.0.1:9000/, URL to get the current environment and version.
 
 Use "/participants" to get a reply based on the value of PARTICIPANTS set in the environmental variable.
 
